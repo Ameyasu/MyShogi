@@ -19,6 +19,7 @@ const KomaAbs* g_hoveringKoma;
 // 以下、private プロトタイプ宣言
 namespace
 {
+void paintDefault(const Shogi& shogi, const KomaAbs* hoveringKoma);
 void paintBoard(const Shogi& shogi, const KomaAbs* hoveringKoma);
 void paintMochiGoma(const Shogi& shogi, const KomaAbs* hoveringKoma);
 void paintTurn(const Shogi& shogi);
@@ -34,34 +35,14 @@ void paintFront(HDC hdc)
 }
 void paintMem(const Shogi& shogi)
 {
-	// 取りあえず全部真っ白にリセット
-	PatBlt(getMem(), 0, 0, CLIENT_X_SIZE, CLIENT_Y_SIZE, WHITENESS);
-
-	// ボード
-	paintBoard(shogi, nullptr);
-
-	// 持ち駒
-	paintMochiGoma(shogi, nullptr);
-
-	// 手番
-	paintTurn(shogi);
+	paintDefault(shogi, nullptr);
 }
 
 void startKomaHovering(const Shogi& shogi, const KomaAbs* koma)
 {
 	g_hoveringKoma = koma;
 
-	// 取りあえず全部真っ白にリセット
-	PatBlt(getMem(), 0, 0, CLIENT_X_SIZE, CLIENT_Y_SIZE, WHITENESS);
-
-	// ボード
-	paintBoard(shogi, g_hoveringKoma);
-
-	// 持ち駒
-	paintMochiGoma(shogi, g_hoveringKoma);
-
-	// 手番
-	paintTurn(shogi);
+	paintDefault(shogi, g_hoveringKoma);
 
 	// ホバリングしている駒だけが描画されていない画像をコピー
 	BitBlt(getMemTmp(), 0, 0, CLIENT_X_SIZE, CLIENT_Y_SIZE, getMem(), 0, 0, SRCCOPY);
@@ -80,6 +61,20 @@ void paintKomaHovering(int x, int y)
 // 以下、private 関数定義
 namespace
 {
+void paintDefault(const Shogi& shogi, const KomaAbs* hoveringKoma)
+{
+	// 取りあえず全部真っ白にリセット
+	PatBlt(getMem(), 0, 0, CLIENT_X_SIZE, CLIENT_Y_SIZE, WHITENESS);
+
+	// ボード
+	paintBoard(shogi, hoveringKoma);
+
+	// 持ち駒
+	paintMochiGoma(shogi, hoveringKoma);
+
+	// 手番
+	paintTurn(shogi);
+}
 void paintBoard(const Shogi& shogi, const KomaAbs* hoveringKoma)
 {
 	// ボード
