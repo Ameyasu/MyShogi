@@ -1,8 +1,15 @@
 #include "Activity.h"
 #include "BmpOwner.h"
+#include "Shogi.h"
 
 namespace Activity
 {
+namespace
+{
+Shogi g_shogi;
+}
+
+
 void onCreate(HINSTANCE hinst, HWND hwnd)
 {
 	BmpOwner::onCreate(hinst, hwnd);

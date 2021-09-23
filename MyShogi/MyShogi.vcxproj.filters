@@ -16,6 +16,9 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Koma">
+      <UniqueIdentifier>{cd8ffea3-da6b-4b55-a8f6-4c148244db97}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -42,6 +45,18 @@
     <ClInclude Include="Activity.h">
       <Filter>Main</Filter>
     </ClInclude>
+    <ClInclude Include="Shogi.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="KomaAbs.h">
+      <Filter>Koma</Filter>
+    </ClInclude>
+    <ClInclude Include="Board.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="MochiGoma.h">
+      <Filter>Main</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BmpOwner.cpp">
@@ -51,6 +66,15 @@
       <Filter>Default</Filter>
     </ClCompile>
     <ClCompile Include="Activity.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Shogi.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Board.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="MochiGoma.cpp">
       <Filter>Main</Filter>
     </ClCompile>
   </ItemGroup>

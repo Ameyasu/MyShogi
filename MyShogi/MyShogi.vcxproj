@@ -143,6 +143,10 @@
   <ItemGroup>
     <ClInclude Include="Activity.h" />
     <ClInclude Include="BmpOwner.h" />
+    <ClInclude Include="Board.h" />
+    <ClInclude Include="MochiGoma.h" />
+    <ClInclude Include="Shogi.h" />
+    <ClInclude Include="KomaAbs.h" />
     <ClInclude Include="KomaState.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MyShogi.h" />
@@ -153,6 +157,9 @@
   <ItemGroup>
     <ClCompile Include="Activity.cpp" />
     <ClCompile Include="BmpOwner.cpp" />
+    <ClCompile Include="Board.cpp" />
+    <ClCompile Include="MochiGoma.cpp" />
+    <ClCompile Include="Shogi.cpp" />
     <ClCompile Include="MyShogi.cpp" />
   </ItemGroup>
   <ItemGroup>

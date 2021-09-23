@@ -1,3 +1,7 @@
+/*
+* ‹î‚PŒÂ•ª‚Ìó‘Ô‚ğ•\‚·
+*/
+
 #pragma once
 
 struct KomaState

@@ -10,7 +10,6 @@
 #include <windows.h>
 #pragma comment(lib, "Msimg32.lib")     // for TransparentBlt
 // C RunTime Header Files
-#include <stdlib.h>
-#include <malloc.h>
-#include <memory.h>
-#include <tchar.h>
+#include <cstdlib>
+#include <memory>
+#include <vector>
