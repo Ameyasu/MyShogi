@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyShogi", "MyShogi\MyShogi.vcxproj", "{B82F3F96-21C7-4CAD-B50E-732E3F705919}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B82F3F96-21C7-4CAD-B50E-732E3F705919}.Debug|x64.ActiveCfg = Debug|x64
+		{B82F3F96-21C7-4CAD-B50E-732E3F705919}.Debug|x64.Build.0 = Debug|x64
+		{B82F3F96-21C7-4CAD-B50E-732E3F705919}.Debug|x86.ActiveCfg = Debug|Win32
+		{B82F3F96-21C7-4CAD-B50E-732E3F705919}.Debug|x86.Build.0 = Debug|Win32
+		{B82F3F96-21C7-4CAD-B50E-732E3F705919}.Release|x64.ActiveCfg = Release|x64
+		{B82F3F96-21C7-4CAD-B50E-732E3F705919}.Release|x64.Build.0 = Release|x64
+		{B82F3F96-21C7-4CAD-B50E-732E3F705919}.Release|x86.ActiveCfg = Release|Win32
+		{B82F3F96-21C7-4CAD-B50E-732E3F705919}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD097E0A-2707-4C28-94C9-D9BED273DE73}
+	EndGlobalSection
+EndGlobal
