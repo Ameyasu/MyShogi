@@ -4,6 +4,7 @@
 #include "framework.h"
 #include "MyShogi.h"
 #include "Activity.h"
+#include "ScreenLayout.h"
 
 #define MAX_LOADSTRING 100
 
@@ -98,8 +99,12 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // Store instance handle in our global variable
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+   DWORD dwStyle = WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU;
+   RECT r = {0, 0, ScreenLayout::CLIENT_X_SIZE, ScreenLayout::CLIENT_Y_SIZE};
+   AdjustWindowRect(&r, dwStyle, TRUE);
+
+   HWND hWnd = CreateWindowW(szWindowClass, szTitle, dwStyle,
+      CW_USEDEFAULT, 0, r.right - r.left, r.bottom - r.top, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
    {

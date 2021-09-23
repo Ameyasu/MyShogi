@@ -17,11 +17,15 @@ constexpr int BOARD_X_SIZE_PX = MASU_X_SIZE_PX * BOARD_X_SIZE;
 constexpr int BOARD_Y_SIZE_PX = MASU_Y_SIZE_PX * BOARD_Y_SIZE;
 
 // ボードの左上座標
-constexpr int BOARD_X = 0;
+constexpr int BOARD_X = MASU_X_SIZE_PX * 2;
 constexpr int BOARD_Y = 0;
 
 // koma.bmpのサイズ
 // 駒1つ1つのサイズはmasu.bmpと同じ
 constexpr int KOMA_X_SIZE_PX = 450;
 constexpr int KOMA_Y_SIZE_PX = 104;
+
+// ウィンドウのクライアント
+constexpr int CLIENT_X_SIZE = BOARD_X_SIZE_PX + MASU_X_SIZE_PX * 4;
+constexpr int CLIENT_Y_SIZE = BOARD_Y_SIZE_PX;
 };

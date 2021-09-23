@@ -103,10 +103,10 @@ void createBoard(HINSTANCE hinst, HDC hdc)
 	// ‹ó‰æ‘œ‚Émasu.bmp‚ğ•`‰æ‚µ‚Äƒ{[ƒh‰æ‘œ‚ğŠ®¬‚³‚¹‚é
 	for (int y = 0; y < BOARD_Y_SIZE; ++y)
 	{
-		int paintY = (y * MASU_Y_SIZE_PX) + BOARD_Y;
+		int paintY = y * MASU_Y_SIZE_PX;
 		for (int x = 0; x < ScreenLayout::BOARD_X_SIZE; ++x)
 		{
-			int paintX = (x * MASU_X_SIZE_PX) + BOARD_X;
+			int paintX = x * MASU_X_SIZE_PX;
 			BitBlt(g_hBoardDC, paintX, paintY, MASU_X_SIZE_PX, MASU_Y_SIZE_PX, hMasuDC, 0, 0, SRCCOPY);
 		}
 	}
