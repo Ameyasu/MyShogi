@@ -21,6 +21,7 @@ namespace
 {
 void paintBoard(const Shogi& shogi, const KomaAbs* hoveringKoma);
 void paintMochiGoma(const Shogi& shogi, const KomaAbs* hoveringKoma);
+void paintTurn(const Shogi& shogi);
 }
 
 
@@ -41,6 +42,9 @@ void paintMem(const Shogi& shogi)
 
 	// 持ち駒
 	paintMochiGoma(shogi, nullptr);
+
+	// 手番
+	paintTurn(shogi);
 }
 
 void startKomaHovering(const Shogi& shogi, const KomaAbs* koma)
@@ -55,6 +59,9 @@ void startKomaHovering(const Shogi& shogi, const KomaAbs* koma)
 
 	// 持ち駒
 	paintMochiGoma(shogi, g_hoveringKoma);
+
+	// 手番
+	paintTurn(shogi);
 
 	// ホバリングしている駒だけが描画されていない画像をコピー
 	BitBlt(getMemTmp(), 0, 0, CLIENT_X_SIZE, CLIENT_Y_SIZE, getMem(), 0, 0, SRCCOPY);
@@ -94,13 +101,21 @@ void paintBoard(const Shogi& shogi, const KomaAbs* hoveringKoma)
 			}
 			auto& state = koma->getKomaState();
 			auto img = getKoma(state);
-			TransparentBlt(getMem(), paintX, paintY, KOMA_X_SIZE_PX, KOMA_Y_SIZE_PX, std::get<0>(img), std::get<1>(img), std::get<2>(img), KOMA_X_SIZE_PX, KOMA_Y_SIZE_PX, RGB(255, 255, 255));
+			TransparentBlt(getMem(), paintX, paintY, MASU_X_SIZE_PX, MASU_Y_SIZE_PX, std::get<0>(img), std::get<1>(img), std::get<2>(img), MASU_X_SIZE_PX, MASU_Y_SIZE_PX, RGB(255, 255, 255));
 		}
 	}
 }
 void paintMochiGoma(const Shogi& shogi, const KomaAbs* hoveringKoma)
 {
 
+}
+void paintTurn(const Shogi& shogi)
+{
+	auto imgSente = getTurn(KomaState::SenteGote::SENTE, shogi.getTurn());
+	BitBlt(getMem(), BOARD_X + BOARD_X_SIZE_PX, BOARD_Y + BOARD_Y_SIZE_PX - MASU_Y_SIZE_PX, MASU_X_SIZE_PX, MASU_Y_SIZE_PX, std::get<0>(imgSente), std::get<1>(imgSente), std::get<2>(imgSente), SRCCOPY);
+
+	auto imgGote = getTurn(KomaState::SenteGote::GOTE, shogi.getTurn());
+	BitBlt(getMem(), BOARD_X - MASU_X_SIZE_PX, BOARD_Y, MASU_X_SIZE_PX, MASU_Y_SIZE_PX, std::get<0>(imgGote), std::get<1>(imgGote), std::get<2>(imgGote), SRCCOPY);
 }
 }
 }

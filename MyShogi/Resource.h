@@ -19,6 +19,7 @@
 
 #define IDB_MASU				129
 #define IDB_KOMA				130
+#define IDB_TEBAN				131
 
 // Next default values for new objects
 //
@@ -26,7 +27,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 
 #define _APS_NO_MFC					130
-#define _APS_NEXT_RESOURCE_VALUE	131
+#define _APS_NEXT_RESOURCE_VALUE	132
 #define _APS_NEXT_COMMAND_VALUE		32771
 #define _APS_NEXT_CONTROL_VALUE		1000
 #define _APS_NEXT_SYMED_VALUE		110

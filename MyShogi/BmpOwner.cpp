@@ -22,6 +22,10 @@ HBITMAP g_hSenteKomaBmpPrev;
 HDC g_hGoteKomaDC;
 HBITMAP g_hGoteKomaBmpPrev;
 
+// éËî‘âÊëú
+HDC g_hTurnDC;
+HBITMAP g_hTurnBmpPrev;
+
 // ï`âÊêÊâÊëú
 HDC g_hMemDC;
 HBITMAP g_hMemBmpPrev;
@@ -39,6 +43,7 @@ namespace
 void createBoard(HINSTANCE hinst, HDC hdc);
 void createSenteKoma(HINSTANCE hinst, HDC hdc);
 void createGoteKoma(HDC hdc);
+void createTeban(HINSTANCE hinst, HDC hdc);
 void createMem(HDC hdc);
 }
 
@@ -54,6 +59,7 @@ void onCreate(HINSTANCE hinst, HWND hwnd)
 	createBoard(hinst, hdc);
 	createSenteKoma(hinst, hdc);
 	createGoteKoma(hdc);
+	createTeban(hinst, hdc);
 	createMem(hdc);
 
 	ReleaseDC(hwnd, hdc);
@@ -76,6 +82,11 @@ void onDestroy()
 	DeleteObject(hbmp);
 	DeleteDC(g_hGoteKomaDC);
 
+	// éËî‘âÊëúÇîjä¸Ç∑ÇÈ
+	hbmp = (HBITMAP)SelectObject(g_hTurnDC, g_hTurnBmpPrev);
+	DeleteObject(hbmp);
+	DeleteDC(g_hTurnDC);
+
 	// ï`âÊêÊâÊëúÇîjä¸Ç∑ÇÈ
 	hbmp = (HBITMAP)SelectObject(g_hMemDC, g_hMemBmpPrev);
 	DeleteObject(hbmp);
@@ -92,21 +103,19 @@ HDC getBoard()
 	return g_hBoardDC;
 }
 
-HDC getSenteKoma()
-{
-	return g_hSenteKomaDC;
-}
-
-HDC getGoteKoma()
-{
-	return g_hGoteKomaDC;
-}
-
 std::tuple<HDC, int, int> getKoma(const KomaState& state)
 {
-	HDC hdc = (state.senteGote == KomaState::SenteGote::SENTE) ? getSenteKoma() : getGoteKoma();
-	int x = static_cast<int>(state.type) * KOMA_X_SIZE_PX;
-	int y = (state.nari == KomaState::Nari::NARI) ? KOMA_Y_SIZE_PX : 0;
+	HDC hdc = (state.senteGote == KomaState::SenteGote::SENTE) ? g_hSenteKomaDC : g_hGoteKomaDC;
+	int x = static_cast<int>(state.type) * MASU_X_SIZE_PX;
+	int y = (state.nari == KomaState::Nari::NARI) ? MASU_Y_SIZE_PX : 0;
+	return {hdc, x, y};
+}
+
+std::tuple<HDC, int, int> getTurn(KomaState::SenteGote senteGote, Shogi::Turn turn)
+{
+	HDC hdc = g_hTurnDC;
+	int x = ((senteGote == KomaState::SenteGote::SENTE) ? 0 : MASU_X_SIZE_PX * 2) + ((turn == Shogi::Turn::SENTE) ? MASU_X_SIZE_PX : 0);
+	int y = 0;
 	return {hdc, x, y};
 }
 
@@ -183,6 +192,13 @@ void createGoteKoma(HDC hdc)
 			PlgBlt(g_hGoteKomaDC, p, g_hSenteKomaDC, x * MASU_X_SIZE_PX, y * MASU_Y_SIZE_PX, MASU_X_SIZE_PX, MASU_Y_SIZE_PX, nullptr, 0, 0);
 		}
 	}
+}
+void createTeban(HINSTANCE hinst, HDC hdc)
+{
+	// teban.bmpÇì«Ç›çûÇﬁ
+	g_hTurnDC = CreateCompatibleDC(hdc);
+	HBITMAP hbmp = LoadBitmap(hinst, MAKEINTRESOURCE(IDB_TEBAN));
+	g_hTurnBmpPrev = (HBITMAP)SelectObject(g_hTurnDC, hbmp);
 }
 void createMem(HDC hdc)
 {
