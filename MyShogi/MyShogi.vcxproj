@@ -145,6 +145,7 @@
     <ClInclude Include="BmpOwner.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="MochiGoma.h" />
+    <ClInclude Include="Painter.h" />
     <ClInclude Include="Shogi.h" />
     <ClInclude Include="KomaAbs.h" />
     <ClInclude Include="KomaState.h" />
@@ -159,6 +160,7 @@
     <ClCompile Include="BmpOwner.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="MochiGoma.cpp" />
+    <ClCompile Include="Painter.cpp" />
     <ClCompile Include="Shogi.cpp" />
     <ClCompile Include="MyShogi.cpp" />
   </ItemGroup>

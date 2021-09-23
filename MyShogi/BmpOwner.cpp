@@ -21,6 +21,14 @@ HBITMAP g_hSenteKomaBmpPrev;
 // Œãè‹î‰æ‘œ
 HDC g_hGoteKomaDC;
 HBITMAP g_hGoteKomaBmpPrev;
+
+// •`‰ææ‰æ‘œ
+HDC g_hMemDC;
+HBITMAP g_hMemBmpPrev;
+
+// •`‰ææ‰æ‘œ‚ğˆêŠm•Û‚·‚é‰æ‘œ
+HDC g_hMemTmpDC;
+HBITMAP g_hMemTmpBmpPrev;
 }
 
 
@@ -30,7 +38,8 @@ namespace
 {
 void createBoard(HINSTANCE hinst, HDC hdc);
 void createSenteKoma(HINSTANCE hinst, HDC hdc);
-void createGoteKoma(HINSTANCE hinst, HDC hdc);
+void createGoteKoma(HDC hdc);
+void createMem(HDC hdc);
 }
 
 
@@ -44,7 +53,8 @@ void onCreate(HINSTANCE hinst, HWND hwnd)
 
 	createBoard(hinst, hdc);
 	createSenteKoma(hinst, hdc);
-	createGoteKoma(hinst, hdc);
+	createGoteKoma(hdc);
+	createMem(hdc);
 
 	ReleaseDC(hwnd, hdc);
 }
@@ -65,6 +75,16 @@ void onDestroy()
 	hbmp = (HBITMAP)SelectObject(g_hGoteKomaDC, g_hGoteKomaBmpPrev);
 	DeleteObject(hbmp);
 	DeleteDC(g_hGoteKomaDC);
+
+	// •`‰ææ‰æ‘œ‚ğ”jŠü‚·‚é
+	hbmp = (HBITMAP)SelectObject(g_hMemDC, g_hMemBmpPrev);
+	DeleteObject(hbmp);
+	DeleteDC(g_hMemDC);
+
+	// •`‰ææ‰æ‘œˆêŠm•Û‰æ‘œ‚ğ”jŠü‚·‚é
+	hbmp = (HBITMAP)SelectObject(g_hMemTmpDC, g_hMemTmpBmpPrev);
+	DeleteObject(hbmp);
+	DeleteDC(g_hMemTmpDC);
 }
 
 HDC getBoard()
@@ -80,6 +100,24 @@ HDC getSenteKoma()
 HDC getGoteKoma()
 {
 	return g_hGoteKomaDC;
+}
+
+std::tuple<HDC, int, int> getKoma(const KomaState& state)
+{
+	HDC hdc = (state.senteGote == KomaState::SenteGote::SENTE) ? getSenteKoma() : getGoteKoma();
+	int x = static_cast<int>(state.type) * KOMA_X_SIZE_PX;
+	int y = (state.nari == KomaState::Nari::NARI) ? KOMA_Y_SIZE_PX : 0;
+	return {hdc, x, y};
+}
+
+HDC getMem()
+{
+	return g_hMemDC;
+}
+
+HDC getMemTmp()
+{
+	return g_hMemTmpDC;
 }
 
 
@@ -124,7 +162,7 @@ void createSenteKoma(HINSTANCE hinst, HDC hdc)
 	HBITMAP hbmp = LoadBitmap(hinst, MAKEINTRESOURCE(IDB_KOMA));
 	g_hSenteKomaBmpPrev = (HBITMAP)SelectObject(g_hSenteKomaDC, hbmp);
 }
-void createGoteKoma(HINSTANCE hinst, HDC hdc)
+void createGoteKoma(HDC hdc)
 {
 	// ‹ó‰æ‘œ‚ğ¶¬‚·‚é
 	g_hGoteKomaDC = CreateCompatibleDC(hdc);
@@ -146,6 +184,19 @@ void createGoteKoma(HINSTANCE hinst, HDC hdc)
 		}
 	}
 }
+void createMem(HDC hdc)
+{
+	// •`‰ææ‰æ‘œ‚ğ¶¬‚·‚é
+	g_hMemDC = CreateCompatibleDC(hdc);
+	HBITMAP hbmp = CreateCompatibleBitmap(hdc, CLIENT_X_SIZE, CLIENT_Y_SIZE);
+	g_hMemBmpPrev = (HBITMAP)SelectObject(g_hMemDC, hbmp);
+
+	// •`‰ææ‰æ‘œˆêŠm•Û‰æ‘œ‚ğ¶¬‚·‚é
+	g_hMemTmpDC = CreateCompatibleDC(hdc);
+	hbmp = CreateCompatibleBitmap(hdc, CLIENT_X_SIZE, CLIENT_Y_SIZE);
+	g_hMemTmpBmpPrev = (HBITMAP)SelectObject(g_hMemTmpDC, hbmp);
+}
+
 }
 }
 

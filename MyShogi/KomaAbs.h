@@ -16,11 +16,11 @@ public:
 	KomaAbs();
 
 public:
-	const KomaState& GetKomaState() const;
-	void SetNari(KomaState::Nari nari);
-	void SetSenteGote(KomaState::SenteGote senteGote);
+	const KomaState& getKomaState() const;
+	void setNari(KomaState::Nari nari);
+	void setSenteGote(KomaState::SenteGote senteGote);
 
-	virtual std::vector<POINT> MakeMovablePoints(const Board& board, int ox, int oy) = 0;
+	virtual std::vector<POINT> makeMovablePoints(const Board& board, int ox, int oy) = 0;
 
 protected:
 	KomaState m_komaState;
@@ -31,17 +31,17 @@ inline KomaAbs::KomaAbs()
 {
 }
 
-inline const KomaState& KomaAbs::GetKomaState() const
+inline const KomaState& KomaAbs::getKomaState() const
 {
 	return m_komaState;
 }
 
-inline void KomaAbs::SetNari(KomaState::Nari nari)
+inline void KomaAbs::setNari(KomaState::Nari nari)
 {
 	m_komaState.nari = nari;
 }
 
-inline void KomaAbs::SetSenteGote(KomaState::SenteGote senteGote)
+inline void KomaAbs::setSenteGote(KomaState::SenteGote senteGote)
 {
 	m_komaState.senteGote = senteGote;
 }

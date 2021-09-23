@@ -15,6 +15,12 @@ public:
 public:
 	const std::unique_ptr<KomaAbs>& get(int x, int y) const;
 	void set(int x, int y, std::unique_ptr<KomaAbs> koma);
+
+	/*
+	* (bx, by)‚©‚ç(ax, ay)‚Ö‹î‚ğˆÚ“®‚·‚é
+	* 
+	* @return ˆÚ“®æ‚É‚ ‚Á‚½‹î
+	*/
 	std::unique_ptr<KomaAbs> move(int bx, int by, int ax, int ay);
 
 	bool in(int x, int y) const;

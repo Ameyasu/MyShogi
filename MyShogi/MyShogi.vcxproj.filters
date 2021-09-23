@@ -5,9 +5,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Paint">
-      <UniqueIdentifier>{4fe17853-bed3-4041-b67f-fb994fac1f0b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Default">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
@@ -18,6 +15,9 @@
     </Filter>
     <Filter Include="Koma">
       <UniqueIdentifier>{cd8ffea3-da6b-4b55-a8f6-4c148244db97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View">
+      <UniqueIdentifier>{4fe17853-bed3-4041-b67f-fb994fac1f0b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -34,10 +34,10 @@
       <Filter>Default</Filter>
     </ClInclude>
     <ClInclude Include="BmpOwner.h">
-      <Filter>Paint</Filter>
+      <Filter>View</Filter>
     </ClInclude>
     <ClInclude Include="ScreenLayout.h">
-      <Filter>Paint</Filter>
+      <Filter>View</Filter>
     </ClInclude>
     <ClInclude Include="KomaState.h">
       <Filter>Main</Filter>
@@ -57,10 +57,13 @@
     <ClInclude Include="MochiGoma.h">
       <Filter>Main</Filter>
     </ClInclude>
+    <ClInclude Include="Painter.h">
+      <Filter>View</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BmpOwner.cpp">
-      <Filter>Paint</Filter>
+      <Filter>View</Filter>
     </ClCompile>
     <ClCompile Include="MyShogi.cpp">
       <Filter>Default</Filter>
@@ -76,6 +79,9 @@
     </ClCompile>
     <ClCompile Include="MochiGoma.cpp">
       <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Painter.cpp">
+      <Filter>View</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
