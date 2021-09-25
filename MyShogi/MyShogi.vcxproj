@@ -144,6 +144,8 @@
     <ClInclude Include="Activity.h" />
     <ClInclude Include="BmpOwner.h" />
     <ClInclude Include="Board.h" />
+    <ClInclude Include="InitialPlacer.h" />
+    <ClInclude Include="KomaCon.h" />
     <ClInclude Include="MochiGoma.h" />
     <ClInclude Include="Painter.h" />
     <ClInclude Include="Shogi.h" />
@@ -159,6 +161,8 @@
     <ClCompile Include="Activity.cpp" />
     <ClCompile Include="BmpOwner.cpp" />
     <ClCompile Include="Board.cpp" />
+    <ClCompile Include="InitialPlacer.cpp" />
+    <ClCompile Include="KomaCon.cpp" />
     <ClCompile Include="MochiGoma.cpp" />
     <ClCompile Include="Painter.cpp" />
     <ClCompile Include="Shogi.cpp" />

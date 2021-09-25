@@ -13,7 +13,8 @@ class Board;
 class KomaAbs
 {
 public:
-	KomaAbs();
+	KomaAbs(KomaState::Type type);
+	virtual ~KomaAbs() = default;
 
 public:
 	const KomaState& getKomaState() const;
@@ -22,13 +23,14 @@ public:
 
 	virtual std::vector<POINT> makeMovablePoints(const Board& board, int ox, int oy) = 0;
 
-protected:
+private:
 	KomaState m_komaState;
 };
 
-inline KomaAbs::KomaAbs()
+inline KomaAbs::KomaAbs(KomaState::Type type)
 	: m_komaState()
 {
+	m_komaState.type = type;
 }
 
 inline const KomaState& KomaAbs::getKomaState() const

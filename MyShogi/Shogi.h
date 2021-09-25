@@ -22,6 +22,8 @@ public:
 	Shogi();
 
 public:
+	void startNewGame();
+
 	const Board& getBoard() const;
 	const MochiGoma& getSenteMochi() const;
 	const MochiGoma& getGoteMochi() const;

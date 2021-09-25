@@ -35,3 +35,14 @@ bool Board::in(int x, int y) const
 {
 	return 0 <= x && x < X_SIZE && 0 <= y && y < Y_SIZE;
 }
+
+void Board::clear()
+{
+	for (int y = 0; y < Y_SIZE; ++y)
+	{
+		for (int x = 0; x < X_SIZE; ++x)
+		{
+			m_board[y][x] = std::unique_ptr<KomaAbs>();
+		}
+	}
+}

@@ -13,3 +13,8 @@ std::unique_ptr<KomaAbs> MochiGoma::remove(KomaState::Type type)
 {
 	return std::unique_ptr<KomaAbs>();
 }
+
+void MochiGoma::clear()
+{
+	m_mochi.clear();
+}

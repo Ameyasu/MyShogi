@@ -14,6 +14,7 @@ Shogi g_shogi;
 void onCreate(HINSTANCE hinst, HWND hwnd)
 {
 	BmpOwner::onCreate(hinst, hwnd);
+	g_shogi.startNewGame();
 }
 void onDestroy()
 {

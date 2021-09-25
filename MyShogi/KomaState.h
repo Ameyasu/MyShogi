@@ -13,8 +13,8 @@ struct KomaState
 		KEI,
 		GIN,
 		KIN,
-		HI,
 		KAKU,
+		HI,
 		GYOKU,
 		O
 	};

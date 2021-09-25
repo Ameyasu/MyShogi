@@ -12,6 +12,7 @@ public:
 	const std::vector<std::unique_ptr<KomaAbs>>& get() const;
 	void add(std::unique_ptr<KomaAbs> koma);
 	std::unique_ptr<KomaAbs> remove(KomaState::Type type);
+	void clear();
 
 private:
 	std::vector<std::unique_ptr<KomaAbs>> m_mochi;

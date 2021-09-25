@@ -84,10 +84,10 @@ void paintBoard(const Shogi& shogi, const KomaAbs* hoveringKoma)
 	const Board& board = shogi.getBoard();
 	for (int y = 0; y < BOARD_Y_SIZE; ++y)
 	{
-		int paintY = (y * BOARD_Y_SIZE_PX) + BOARD_Y;
+		int paintY = (y * MASU_Y_SIZE_PX) + BOARD_Y;
 		for (int x = 0; x < BOARD_X_SIZE; ++x)
 		{
-			int paintX = (x * BOARD_X_SIZE_PX) + BOARD_X;
+			int paintX = (x * MASU_X_SIZE_PX) + BOARD_X;
 			auto& koma = board.get(x, y);
 			if (!koma || koma.get() == hoveringKoma)
 			{

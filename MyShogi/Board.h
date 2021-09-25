@@ -24,6 +24,7 @@ public:
 	std::unique_ptr<KomaAbs> move(int bx, int by, int ax, int ay);
 
 	bool in(int x, int y) const;
+	void clear();
 
 private:
 	std::unique_ptr<KomaAbs> m_board[Y_SIZE][X_SIZE];
